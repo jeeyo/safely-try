@@ -1,0 +1,41 @@
+name: Build
+
+on:
+  pull_request:
+    branches: ['main']
+    paths-ignore:
+      - '**.md'
+  push:
+    branches:
+      - 'main'
+    paths-ignore:
+      - '**.md'
+
+jobs:
+
+  build:
+    name: 'Build and test'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x, 16.x, 18.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - run: npm install
+
+      - run: npm test
+
+      - run: npm run build
+
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
