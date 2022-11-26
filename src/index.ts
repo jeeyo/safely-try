@@ -1,6 +1,6 @@
 import isPromise from 'is-promise';
 
-const safely = <T>(fn: (...args: any[]) => T) => {
+const safelyTry = <T>(fn: (...args: any[]) => T) => {
 
   let returnValues: T | Promise<T> | undefined = undefined;
   let exceptionThrown: unknown | undefined = undefined;
@@ -26,4 +26,4 @@ const safely = <T>(fn: (...args: any[]) => T) => {
   return [returnValues, exceptionThrown];
 };
 
-export default safely;
+export default safelyTry;

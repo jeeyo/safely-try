@@ -1,5 +1,5 @@
 {
-  "name": "@jeeyo/safely",
+  "name": "safely-try",
   "version": "0.0.1",
   "description": "Handle exception more elegantly",
   "main": "lib/index.js",
@@ -9,20 +9,21 @@
     "test": "jest --config jestconfig.json"
   },
   "keywords": [
+    "safely",
     "try",
     "catch",
     "error"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jeeyo/safely.git"
+    "url": "git+https://github.com/jeeyo/safely-try.git"
   },
   "author": "Natchanon Nuntanirund <jeeyo@outlook.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jeeyo/safely/issues"
+    "url": "https://github.com/jeeyo/safely-try/issues"
   },
-  "homepage": "https://github.com/jeeyo/safely",
+  "homepage": "https://github.com/jeeyo/safely-try",
   "devDependencies": {
     "@types/jest": "^29.2.3",
     "jest": "^29.3.1",
