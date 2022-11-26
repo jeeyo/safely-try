@@ -1,5 +1,5 @@
 # safely
 
 ```bash
-npm i --save safely
+npm i --save @jeeyo/safely
 ```
