@@ -13,8 +13,8 @@ on:
 
 jobs:
 
-  build:
-    name: 'Build and test'
+  test:
+    name: 'Test'
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -31,11 +31,29 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - run: npm install
-
       - run: npm test
-
       - run: npm run build
 
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  build:
+    name: 'Build and Publish'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: test
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - run: npm ci
+      - run: npm run build
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
