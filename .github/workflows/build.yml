@@ -33,23 +33,10 @@ jobs:
       - run: npm install
       - run: npm test
 
-  build:
-    name: 'Build and Publish'
+  release:
+    name: 'Release'
     runs-on: ubuntu-latest
-    timeout-minutes: 5
     needs: test
-
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-          registry-url: 'https://registry.npmjs.org'
-
-      - run: npm ci
-      - run: npm run build
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Release
+        uses: softprops/action-gh-release@v1

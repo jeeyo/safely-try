@@ -1,5 +1,5 @@
 {
-  "name": "safely",
+  "name": "@jeeyo/safely",
   "version": "0.0.1",
   "description": "Handle exception more elegantly",
   "main": "lib/index.js",
