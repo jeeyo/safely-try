@@ -4,7 +4,7 @@ function isPromise<T, S>(obj: PromiseLike<T> | S): obj is PromiseLike<T> {
 
 const safelyTry = <T>(fn: (...args: any[]) => T, ...args: any[]) => {
 
-  let returnValues: T | Promise<T> | undefined = undefined;
+  let returnValues: T | PromiseLike<T> | undefined = undefined;
   let exceptionThrown: unknown | undefined = undefined;
 
   try {
