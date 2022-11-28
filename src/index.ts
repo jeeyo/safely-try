@@ -1,4 +1,6 @@
-import isPromise from 'is-promise';
+function isPromise<T, S>(obj: PromiseLike<T> | S): obj is PromiseLike<T> {
+  return !!obj && (typeof obj === 'object' || typeof obj === 'function') && 'then' in obj && typeof obj.then === 'function';
+}
 
 const safelyTry = <T>(fn: (...args: any[]) => T, ...args: any[]) => {
 
