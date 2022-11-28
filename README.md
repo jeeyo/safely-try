@@ -1,6 +1,7 @@
 # safely-try
 
 [![Test](https://github.com/jeeyo/safely-try/actions/workflows/test.yml/badge.svg)](https://github.com/jeeyo/safely-try/actions/workflows/test.yml)
+[![npm](https://img.shields.io/npm/v/safely-try.svg)](https://www.npmjs.com/package/safely-try)
 
 `safelyTry()` is an elegant try-catch replacement for JavaScript / TypeScript
 
