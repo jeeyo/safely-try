@@ -11,7 +11,7 @@
 npm i --save safely-try
 ```
 
-### Usage
+## Usage
 
 Instead of using ugly native try-catch like this
 ```typescript
