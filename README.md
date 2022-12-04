@@ -3,7 +3,7 @@
 [![Test](https://github.com/jeeyo/safely-try/actions/workflows/test.yml/badge.svg)](https://github.com/jeeyo/safely-try/actions/workflows/test.yml)
 [![npm](https://img.shields.io/npm/v/safely-try.svg)](https://www.npmjs.com/package/safely-try)
 
-`safelyTry()` is an elegant try-catch replacement for JavaScript / TypeScript
+`safelyTry()` is an elegant try-catch replacement for JavaScript / TypeScript inspired by [Go error handling](https://go.dev/blog/error-handling-and-go)
 
 ## Installation
 
@@ -25,7 +25,7 @@ try {
 
 you can use safelyTry to do something like this
 ```typescript
-import safelyTry from 'safelyTry';
+import safelyTry from 'safely-try';
 
 const [result, error] = safelyTry(somethingMightThrowException);
 if (error) {
