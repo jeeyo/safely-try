@@ -1,6 +1,6 @@
 {
   "name": "safely-try",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "An elegant try-catch replacement for JavaScript / TypeScript",
   "main": "lib/index.js",
   "types": "index.d.ts",
