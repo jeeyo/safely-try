@@ -1,9 +1,9 @@
 {
   "name": "safely-try",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "An elegant try-catch replacement for JavaScript / TypeScript",
   "main": "lib/index.js",
-  "types": "index.d.ts",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "jest --config jestconfig.json"
