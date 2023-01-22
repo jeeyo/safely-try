@@ -2,7 +2,7 @@ function isPromise<T, S>(obj: PromiseLike<T> | S): obj is PromiseLike<T> {
   return !!obj && (typeof obj === 'object' || typeof obj === 'function') && 'then' in obj && typeof obj.then === 'function';
 }
 
-const safelyTry = <T>(fn: (...args: any[]) => T, ...args: any[]): [T?, unknown?] | PromiseLike<[T?, unknown?]> => {
+const safelyTry = <T>(fn: ((...args: any[]) => T) | (() => T), ...args: any[]): [T?, unknown?] | PromiseLike<[T?, unknown?]> => {
 
   let returnValues: T | PromiseLike<T> | undefined = undefined;
   let exceptionThrown: unknown | undefined = undefined;
