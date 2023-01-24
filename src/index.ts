@@ -2,10 +2,7 @@ function isPromise<T, S>(obj: PromiseLike<T> | S): obj is PromiseLike<T> {
   return !!obj && (typeof obj === 'object' || typeof obj === 'function') && 'then' in obj && typeof obj.then === 'function';
 }
 
-const safelyTry = <T>(fn: ((...args: any[]) => T) | (() => T), ...args: any[]): [T?, unknown?] | PromiseLike<[T?, unknown?]> => {
-
-  let returnValues: T | PromiseLike<T> | undefined = undefined;
-  let exceptionThrown: unknown | undefined = undefined;
+const safelyTry = <T>(fn: ((...args: any[]) => T) | (() => T), ...args: any[]): [undefined, unknown] | [T, undefined] | PromiseLike<[undefined, unknown] | [T, undefined]> => {
 
   try {
 
@@ -22,10 +19,13 @@ const safelyTry = <T>(fn: ((...args: any[]) => T) | (() => T), ...args: any[]): 
     }
 
     // synchronous functions
-    returnValues = x;
+    return [x, undefined];
+
   }
-  catch(error) { exceptionThrown = error; }
-  return [returnValues, exceptionThrown];
+  catch(error) {
+    return [undefined, error];
+  }
+
 };
 
 export default safelyTry;
