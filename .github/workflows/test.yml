@@ -7,16 +7,13 @@ on:
       - '**.md'
 
 jobs:
-
   test:
     name: 'Test'
     runs-on: ubuntu-latest
     timeout-minutes: 10
-
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]
-
     steps:
       - uses: actions/checkout@v3
 

@@ -3,9 +3,7 @@ function isPromise<T, S>(obj: PromiseLike<T> | S): obj is PromiseLike<T> {
 }
 
 const safelyTry = <T>(fn: ((...args: any[]) => T) | (() => T), ...args: any[]): [undefined, unknown] | [T, undefined] | PromiseLike<[undefined, unknown] | [T, undefined]> => {
-
   try {
-
     // try calling the function
     const x = fn(...args);
 
