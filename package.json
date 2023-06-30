@@ -2,10 +2,17 @@
   "name": "safely-try",
   "version": "0.4.0",
   "description": "An elegant try-catch replacement for JavaScript / TypeScript",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "exports": {
+    "require": "./dist/cjs/index.js",
+    "import": "./dist/esm/index.js"
+  },
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "npx tsc --emitDeclarationOnly --outDir ./dist",
+    "build-cjs": "tsc --module commonjs --outDir ./dist/cjs",
+    "build-esm": "tsc --module esnext --outDir ./dist/esm",
     "test": "jest"
   },
   "keywords": [
