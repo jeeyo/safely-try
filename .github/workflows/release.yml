@@ -16,14 +16,18 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
 
-      - name: Use Node.js 16.x
+      - name: Use Node.js 20.x
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 20.x
           registry-url: 'https://registry.npmjs.org'
 
       - run: npm ci
       - run: npm run build
+      - run: npm run build-cjs
+      - run: "echo '{\"type\": \"commonjs\"}' > ./dist/cjs/package.json"
+      - run: npm run build-esm
+      - run: "echo '{\"type\": \"module\"}' > ./dist/esm/package.json"
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

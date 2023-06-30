@@ -1,7 +1,6 @@
 import safelyTry from '../src';
 
 describe('safelyTry()', () => {
-
   test('should return [1, undefined] when called with a synchronous function that returns 1 without errors', () => {
     expect(safelyTry(() => 1)).toStrictEqual([1, undefined]);
   });
@@ -20,7 +19,6 @@ describe('safelyTry()', () => {
 });
 
 describe('await safelyTry()', () => {
-
   test('should return [1, undefined] when called with an asynchronous function that returns 1 without errors', async () => {
     expect(await safelyTry(async () => Promise.resolve(1))).toStrictEqual([1, undefined]);
   });
