@@ -28,6 +28,6 @@ jobs:
       - run: "echo '{\"type\": \"commonjs\"}' > ./dist/cjs/package.json"
       - run: npm run build-esm
       - run: "echo '{\"type\": \"module\"}' > ./dist/esm/package.json"
-      - run: npm publish
+      - run: npm publish --tag $(echo "${{ github.ref_name }}" | cut -d'v' -f2)
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
