@@ -1,6 +1,6 @@
 {
   "name": "safely-try",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "An elegant try-catch replacement for JavaScript / TypeScript",
   "exports": {
     "require": "./dist/cjs/index.js",
