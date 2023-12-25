@@ -2,10 +2,10 @@ function isPromise<T, S>(obj: PromiseLike<T> | S): obj is PromiseLike<T> {
   return !!obj && (typeof obj === 'object' || typeof obj === 'function') && 'then' in obj && typeof obj.then === 'function';
 }
 
-function safelyTry<T>(fn: (((...args: any[]) => T) | (() => T)), ...args: any[]):
-  T extends Promise<any>
-    ? Promise<{ data: undefined, error: unknown } | { data: Awaited<T>, error: undefined }>
-    : { data: undefined, error: unknown } | { data: T, error: undefined }
+function safelyTry<T, E = Error>(fn: (((...args: any[]) => T) | (() => T)), ...args: any[]):
+  T extends PromiseLike<any>
+    ? Promise<{ data: undefined, error: E }> | Promise<{ data: Awaited<T>, error: undefined }>
+    : { data: undefined, error: E } | { data: T, error: undefined }
 {
   try {
     // try calling the function
@@ -17,7 +17,7 @@ function safelyTry<T>(fn: (((...args: any[]) => T) | (() => T)), ...args: any[])
       return Promise.resolve(x)
         .then(
           value  => ({ data: value as Awaited<T>, error: undefined }),
-          error => ({ data: undefined, error: error as unknown }),
+          error => ({ data: undefined, error: error as E }),
         );
     }
 
@@ -27,7 +27,7 @@ function safelyTry<T>(fn: (((...args: any[]) => T) | (() => T)), ...args: any[])
   }
   catch(error) {
     // @ts-ignore
-    return { data: undefined, error: error as unknown };
+    return { data: undefined, error: error as E };
   }
 };
 
