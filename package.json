@@ -1,13 +1,14 @@
 {
   "name": "safely-try",
   "description": "An elegant try-catch replacement for JavaScript / TypeScript",
+  "type": "module",
   "exports": {
     "import": "./dist/index.js"
   },
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsc --module esnext --outDir ./dist",
+    "build": "tsc --outDir ./dist",
     "test": "jest"
   },
   "keywords": [
