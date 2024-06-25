@@ -3,12 +3,12 @@
   "description": "An elegant try-catch replacement for JavaScript / TypeScript",
   "type": "module",
   "exports": {
-    "import": "./dist/index.js"
+    "import": "./lib/index.js"
   },
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "module": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
-    "build": "tsc --outDir ./dist",
+    "build": "tsc --outDir ./lib",
     "test": "jest"
   },
   "keywords": [
