@@ -3,7 +3,9 @@
   "description": "An elegant try-catch replacement for JavaScript / TypeScript",
   "type": "module",
   "exports": {
-    "import": "./lib/index.js"
+    "types": "./lib/index.d.ts",
+    "import": "./lib/index.js",
+    "default": "./lib/index.js"
   },
   "module": "./lib/index.js",
   "types": "./lib/index.d.ts",
