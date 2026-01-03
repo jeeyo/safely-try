@@ -5,6 +5,9 @@ on:
     tags:
       - "v*.*.*"
 
+permissions:
+  id-token: write  # Required for OIDC
+
 jobs:
   release:
     name: 'Build and Publish'
@@ -24,6 +27,4 @@ jobs:
 
       - run: yarn install --frozen-lockfile
       - run: yarn build
-      - run: yarn publish --new-version "$(echo "${{ github.ref_name }}" | cut -d'v' -f2)" --no-git-tag-version
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: yarn publish --access public --new-version "$(echo "${{ github.ref_name }}" | cut -d'v' -f2)" --no-git-tag-version
