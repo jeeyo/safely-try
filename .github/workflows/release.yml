@@ -23,6 +23,11 @@ jobs:
           node-version: 24.x
           registry-url: 'https://registry.npmjs.org'
 
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
-      - run: yarn publish --access public --new-version "$(echo "${{ github.ref_name }}" | cut -d'v' -f2)" --no-git-tag-version
+      - run: npm ci
+      - name: Update version in package.json
+        run: |
+          VERSION=$(echo "${{ github.ref_name }}" | cut -d'v' -f2)
+          jq --arg ver "$VERSION" '.version = $ver' package.json > tmp.json && mv tmp.json package.json
+
+      - run: npm run build
+      - run: npm publish
