@@ -24,7 +24,7 @@ try {
 }
 ```
 
-you can use safelyTry to do something like this
+you can use `safelyTry` to do something like this
 
 ```typescript
 import safelyTry from 'safely-try';
@@ -36,18 +36,22 @@ if (error) {
 }
 ```
 
----
+or you can use `safelyTryTuple` to do something like this
 
 ```typescript
-// synchronous functions
-safelyTry(() => 1) === { data: 1, error: undefined }
-safelyTry((x, y) => x + y, 1, 2) === { data: 3, error: undefined }
-safelyTry(() => { throw '1' }) === { data: undefined, error: '1' }
-safelyTry(() => { throw new Error('1') }) === { data: undefined, error: Error('1') }
+import { safelyTryTuple as st } from 'safely-try';
 
-// asynchronous functions
-await safelyTry(async () => Promise.resolve(1)) === { data: 1, error: undefined }
-await safelyTry(async (x, y) => Promise.resolve(x + y), 1, 2) === { data: 3, error: undefined }
-await safelyTry(async () => Promise.reject('1')) === { data: undefined, error: '1' }
-await safelyTry(async () => Promise.reject(new Error('1'))) === { data: undefined, error: Error('1') }
+const [result, error] = st(somethingMightThrowException);
+if (error) {
+  handleTheError(error);
+  return;
+}
 ```
+
+## Screenshots
+
+Type inference works with Language Server Protocol (LSP) in your favorite IDE
+
+![Type inference works with LSP](./assets/type_inference_lsp.png)
+
+*Two screenshots were taken from Visual Studio Code and combined with Nano Banana Pro*
